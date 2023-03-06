@@ -1,0 +1,27 @@
+logging:
+    level:
+        blog: WARN
+        org: WARN
+        org.hibernate.SQL: DEBUG
+spring:
+    autoconfigure:
+        exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+    cloud:
+        config:
+            import-check:
+                enabled: false
+    datasource:
+        driverClassName: com.mysql.cj.jdbc.Driver
+        password: pscale_pw_uL5NTret7L5qmB2BRIH3kYDG9kwftZKQ5T2gVV7irRa
+        url: jdbc:mysql://eu-central.connect.psdb.cloud/autodeluxe?sslMode=VERIFY_IDENTITY
+        username: dgkbu5lmkjr15jc18fgc
+    jpa:
+        hibernate:
+            ddl-auto: update
+        open-in-view: false
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL8Dialect
+                format_sql: true
+    server:
+        port: 8080

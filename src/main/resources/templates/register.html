@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta
+                name="viewport"
+                content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+
+        <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
+        />
+
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+        <meta charset="UTF-8">
+        <title>Register</title>
+
+        <!--  This span is filled with <link> tags for css files!  -->
+        <span>
+        <!--  This span contains the css files for the navigation /desktop and mobile/  -->
+            <span id="navigation-css"></span>
+            <link rel="stylesheet" href="/css/styles/style.css">
+            <link rel="stylesheet" href="/css/styles/desktop-pages-with-form-style.css">
+            <link rel="stylesheet" href="/css/styles/navbar-style.css">
+        </span>
+
+        <!--  This span is filled with <script> tags for JavaScript files!  -->
+        <span>
+            <script src="/js/scripts/navigation-script.js" type="module"></script>
+            <script src="/js/scripts/form-page-script.js"></script>
+        </span>
+
+    </head>
+    <body>
+
+        <div id = "body-background">
+        </div>
+
+        <header>
+            <span>
+                <!--            <span id="mobile-user">-->
+                <!--                    <div style="background-color: #1a1d24; width: 100vw; height: 7.4rem"></div>-->
+                <!--                    <div class="hamburger">-->
+                <!--                        <i class="fas fa-bars"></i>-->
+                <!--                    </div>-->
+                <!--                    <nav class="nav">-->
+                <!--                        <ul class="nav-list">-->
+                <!--                            <li class="nav-item">-->
+                <!--                                <a class="nav-link" href="#">-->
+                <!--                                    <span><i class="fas fa-home"></i></span> Home-->
+                <!--                                </a>-->
+                <!--                            </li>-->
+                <!--                            <li class="nav-item">-->
+                <!--                                <a class="nav-link current" href="#">-->
+                <!--                                    <span><i class="fas fa-register"></i></span> Register-->
+                <!--                                </a>-->
+                <!--                            </li>-->
+                <!--                            <li class="nav-item">-->
+                <!--                                <a class="nav-link" href="#">-->
+                <!--                                    <span><i class="fas fa-login"></i></span> Login-->
+                <!--                                </a>-->
+                <!--                            </li>-->
+                <!--                            <li class="nav-item">-->
+                <!--                                <a class="nav-link" href="#">-->
+                <!--                                    <span><i class="fas fa-logout"></i></span> Logout-->
+                <!--                                </a>-->
+                <!--                            </li>-->
+                <!--                        </ul>-->
+                <!--                    </nav>-->
+                <!--                </span>-->
+            </span>
+
+            <span id="desktop-user">
+                    <nav class="navbar container">
+                        <a href="index.html" class="nav-link">LOGO</a>
+                        <ul class="nav-list">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Login</a>
+                            </li>
+                            <li class="nav-item dropdown">
+<!--                                <a href="#" class="nav-link">Logout</a>-->
+                                <a class = "dropdown-header nav-link"> Username</a>
+                                <ul class = "dropdown-menu">
+                                    <li class = "dropdown-item">
+                                        <a href="#" class = "nav-link"> Account</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" class = "nav-link">Settings</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" class = "nav-link">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <div class="active"></div>
+                        </ul>
+                    </nav>
+                </span>
+        </header>
+
+        <div id = "desktop-main-page" class = "main-page-div">
+            <div class = "register-form-container">
+                <form>
+                    <div class = "form-header">
+                        <h2>Register</h2>
+                    </div>
+
+                    <div class="form__group field">
+                        <input type="text" class="form__field" placeholder="Username" name="username" id='username' required />
+                        <label for="username" class="form__label">Username</label>
+                    </div>
+                    <div class="form__group field">
+                        <input type="email" class="form__field" placeholder="Email" name="email" id='email' required />
+                        <label for="email" class="form__label">Email</label>
+                    </div>
+                    <div class="form__group field">
+                        <input type="password" class="form__field" placeholder="Password" name="password" id='password' required />
+                        <label for="password" class="form__label">Password</label>
+                    </div>
+                    <div class="form__group field">
+                        <input type="password" class="form__field" placeholder="Confirm Password" name="confirmPassword" id='confirm-password' required />
+                        <label for="confirm-password" class="form__label">Confirm Password</label>
+                    </div>
+
+                    <button type = "submit" href = "#" class="register-button btn">Register</button>
+                </form>
+            </div>
+        </div>
+
+    </body>
+</html>

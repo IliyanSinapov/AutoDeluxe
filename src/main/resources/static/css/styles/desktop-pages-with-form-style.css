@@ -1,0 +1,106 @@
+.form-header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.register-form-container {
+    border: 0.1rem solid #38ef7d;
+    border-radius: 2rem;
+    padding: 7rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1a1d24;
+    width: 30%;
+    align-itrems: center;
+}
+
+.form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 1.7rem;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+*::placeholder {
+     color: transparent;
+ }
+
+*:placeholder-shown ~ .form__label {
+     font-size: 1.9rem;
+     cursor: text;
+     top: 20px;
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1.8rem;
+    color: #9b9b9b;
+}
+
+.form__field:focus {
+    padding-bottom: 6px;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #11998e,#38ef7d);
+    border-image-slice: 1;
+}
+
+.form__label:focus {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1.8rem;
+    color: #11998e;
+    font-weight:700;
+}
+
+.register-button {
+    background: linear-gradient(-45deg, #11998e, #38ef7d);
+    background-size: 100% 100%;
+    animation: gradient 15s ease infinite;
+    position: relative;
+    margin-top: 5rem;
+    left: 50%;
+    transform: translate(-50%);
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 2rem;
+    border: transparent;
+    border-radius: 2rem;
+    height: 4rem;
+    width: 12rem;
+
+    color: #1a1d24;
+
+    box-shadow: 0.1rem 0 1rem 0.25rem #046529;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
