@@ -50,7 +50,7 @@ header {
 
 .nav-item:nth-child(4):hover ~ .active {
     transform: translateX(30rem);
-    width: 11.5rem;
+    width: 12.5rem;
 }
 .dropdown-menu{
     display: none;
@@ -84,4 +84,8 @@ header {
 
 .dropdown-item {
     margin-top: 1.5rem;
+}
+
+.dropdown-icon {
+    margin-left: 0.6rem;
 }
