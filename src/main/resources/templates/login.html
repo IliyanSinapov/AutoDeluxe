@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
     <head>
         <meta
                 name="viewport"
@@ -28,6 +28,7 @@
         <span>
             <script src="/js/scripts/navigation-script.js" type="module"></script>
             <script src="/js/scripts/form-page-script.js" type="module"></script>
+            <script src="https://kit.fontawesome.com/09640ec319.js" crossorigin="anonymous"></script>
         </span>
 
     </head>
@@ -70,7 +71,7 @@
 
             <span id="desktop-user">
                 <nav class="navbar container">
-                        <a href="index.html" class="nav-link">LOGO</a>
+                        <a href="index.html" class="nav-link">AutoDeluxe</a>
                         <ul class="nav-list">
                             <li class="nav-item">
                                 <a href="#" class="nav-link">Home</a>
@@ -82,8 +83,8 @@
                                 <a href="#" class="nav-link">Login</a>
                             </li>
                             <li class="nav-item dropdown">
-<!--                                <a href="#" class="nav-link">Logout</a>-->
-                                <a class = "dropdown-header nav-link"> Username</a>
+                                    <a class = "dropdown-header nav-link"> Username</a>
+                                    <i class="fa-solid fa-caret-down dropdown-icon"></i>
                                 <ul class = "dropdown-menu">
                                     <li class = "dropdown-item">
                                         <a href="#" class = "nav-link"> Account</a>
