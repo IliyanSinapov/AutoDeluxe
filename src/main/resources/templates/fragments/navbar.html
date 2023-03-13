@@ -47,25 +47,28 @@
                                 </li>
                             </th:block>
 
-                            <th:block th:if = "${@loggedUser.isLoggedIn()}"></th:block>
-
-                            <li class="nav-item dropdown">
+                            <th:block th:classpath = "${@loggedUser.isLoggedIn()} ? 'dropdown-menu-logged-user' : 'dropdown-menu-not-logged-user'">
+                                <li class="nav-item dropdown">
                                     <a class = "dropdown-header nav-link" th:value = "${@loggedUser.username}"></a>
-                                    <i class="fa-solid fa-caret-down dropdown-icon"></i>
-                                <ul class = "dropdown-menu">
-                                    <li class = "dropdown-item">
-                                        <a href="#" class = "nav-link"> Account</a>
-                                    </li>
+                                    <th:block th:if = "${@loggedUser.isLoggedIn()}">
+                                        <i class = "fa-solid fa-caret-down dropdown-icon"></i>
+                                    </th:block>
+                                    <ul class = "dropdown-menu">
+                                        <li class = "dropdown-item">
+                                            <a href="#" class = "nav-link"> Account</a>
+                                        </li>
 
-                                    <li>
-                                        <a href="#" class = "nav-link">Settings</a>
-                                    </li>
+                                        <li>
+                                            <a href="#" class = "nav-link">Settings</a>
+                                        </li>
 
-                                    <li>
-                                        <a href="#" class = "nav-link">Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
+                                        <li>
+                                            <a href="#" class = "nav-link">Logout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </th:block>
+
                             <div class="active"></div>
                         </ul>
                     </nav>

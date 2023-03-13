@@ -104,3 +104,11 @@
         background-position: 0% 50%;
     }
 }
+
+.dropdown-menu-logged-user{
+    display: block;
+}
+
+.dropdown-menu-not-logged-user {
+    display: none;
+}

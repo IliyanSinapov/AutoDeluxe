@@ -25,10 +25,8 @@ public class User extends BaseEntity{
     private String password;
     @Column(nullable = false)
     private Date createdOn;
-    @OneToMany
+    @ManyToMany
     private List<Car> boughtCars;
-    @OneToMany
-    private List<Car> soldCars;
-    @OneToMany
+    @ManyToMany
     private List<Car> carsForSale;
 }
