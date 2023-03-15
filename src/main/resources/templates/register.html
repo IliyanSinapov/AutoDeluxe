@@ -42,29 +42,29 @@
 
         <div id = "desktop-main-page" class = "main-page-div">
             <div class = "register-form-container">
-                <form>
+                <form th:action = "@{/auth/register}" th:method="POST" th:object = "${userRegisterModel}">
                     <div class = "form-header">
                         <h2>Register</h2>
                     </div>
 
                     <div class="form__group field">
-                        <input type="text" class="form__field" placeholder="Username" name="username" id='username' required />
+                        <input type="text" class="form__field" placeholder="Username" name="username" id='username' th:value="${userRegisterModel.username}"/>
                         <label for="username" class="form__label">Username</label>
                     </div>
                     <div class="form__group field">
-                        <input type="email" class="form__field" placeholder="Email" name="email" id='email' required />
+                        <input type="email" class="form__field" placeholder="Email" name="email" id='email' th:value="${userRegisterModel.username}"/>
                         <label for="email" class="form__label">Email</label>
                     </div>
                     <div class="form__group field">
-                        <input type="password" class="form__field" placeholder="Password" name="password" id='password' required />
+                        <input type="password" class="form__field" placeholder="Password" name="password" id='password' th:value="${userRegisterModel.username}"/>
                         <label for="password" class="form__label">Password</label>
                     </div>
                     <div class="form__group field">
-                        <input type="password" class="form__field" placeholder="Confirm Password" name="confirmPassword" id='confirm-password' required />
+                        <input type="password" class="form__field" placeholder="Confirm Password" name="confirmPassword" id='confirm-password' th:value="${userRegisterModel.username}"/>
                         <label for="confirm-password" class="form__label">Confirm Password</label>
                     </div>
 
-                    <button type = "submit" href = "#" class="register-button btn">Register</button>
+                    <button type = "submit" class="register-button btn">Register</button>
                 </form>
             </div>
         </div>

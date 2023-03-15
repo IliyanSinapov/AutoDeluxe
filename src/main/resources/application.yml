@@ -15,6 +15,10 @@ spring:
         password: pscale_pw_uL5NTret7L5qmB2BRIH3kYDG9kwftZKQ5T2gVV7irRa
         url: jdbc:mysql://eu-central.connect.psdb.cloud/autodeluxe?sslMode=VERIFY_IDENTITY
         username: dgkbu5lmkjr15jc18fgc
+
+#        password: admin
+#        url: jdbc:mysql://localhost:3306/auto_delux?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimeZone=UTC
+#        username: root
     jpa:
         hibernate:
             ddl-auto: update

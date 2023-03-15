@@ -49,7 +49,7 @@
 
                             <th:block th:classpath = "${@loggedUser.isLoggedIn()} ? 'dropdown-menu-logged-user' : 'dropdown-menu-not-logged-user'">
                                 <li class="nav-item dropdown">
-                                    <a class = "dropdown-header nav-link" th:value = "${@loggedUser.username}"></a>
+                                    <a class = "dropdown-header nav-link" th:text = "${@loggedUser.username}"></a>
                                     <th:block th:if = "${@loggedUser.isLoggedIn()}">
                                         <i class = "fa-solid fa-caret-down dropdown-icon"></i>
                                     </th:block>

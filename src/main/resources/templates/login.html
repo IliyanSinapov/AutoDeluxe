@@ -37,26 +37,26 @@
         <div id = "body-background">
         </div>
 
-        <span th:include = "~{fragments/navbar}"></span>
+        <span th:insert = "~{fragments/navbar}"></span>
 
 
 
         <div id = "desktop-main-page" class = "main-page-div">
             <div class = "register-form-container">
-                <form>
+                <form th:action = "@{/auth/login}" th:method = "POST" th:object = "${userLoginModel}">
                     <div class = "form-header">
                         <h2>Log In</h2>
                     </div>
 
                     <div class="form__group field">
-                        <input type="email" class="form__field" placeholder="Email" name="email" id='email' required />
-                        <label for="email" class="form__label">Email</label>
+                        <input type="text" class="form__field" placeholder="Username" name="username" id='username' th:value="${userLoginModel.username}"/>
+                        <label for="username" class="form__label">Username</label>
                     </div>
                     <div class="form__group field">
-                        <input type="password" class="form__field" placeholder="Password" name="password" id='password' required />
+                        <input type="password" class="form__field" placeholder="Password" name="password" id='password' th:value="${userLoginModel.password}" />
                         <label for="password" class="form__label">Password</label>
                     </div>
-                    <button type = "submit" href = "#" class="register-button btn">Log In</button>
+                    <button type = "submit" class="register-button btn">Log In</button>
                 </form>
             </div>
 
