@@ -41,7 +41,6 @@ public class CarController {
                     .addFlashAttribute(BINDING_RESULT_PATH + "addCarModel", bindingResult);
         }
 
-
         return "redirect:/";
     }
 

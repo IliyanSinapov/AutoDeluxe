@@ -1,11 +1,13 @@
 package com.iliyan.autodeluxe.models.entities;
 
+import com.iliyan.autodeluxe.models.enums.Condition;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.sql.Blob;
 import java.util.List;
 
 @Getter
@@ -24,12 +26,13 @@ public class Car {
     private String series;
     @Column
     private BigDecimal price;
-    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CarImage> images;
+    @Lob
+    @Column(length = 10 * 3880 * 2160)
+    private Blob images;
     @Column(nullable = false)
     private String year;
     @Column(nullable = false)
-    private String condition;
+    private Condition condition;
     @Column
     private String mileage;
 }

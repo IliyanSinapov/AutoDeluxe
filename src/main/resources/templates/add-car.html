@@ -40,37 +40,37 @@
 
 <div id="desktop-main-page" class="main-page-div">
     <div class="register-form-container">
-        <form th:action = "@{/add/car}" th:method="POST" th:object="${addCarModel}">
+        <form th:action = "@{/car/add}" th:method="POST" th:object="${addCarModel}" enctype="multipart/form-data">
             <div class="form-header">
                 <h2>Add Car</h2>
             </div>
 
             <div class="form__group field">
-                <input type="text" class="form__field" placeholder="Username" name="username" id='username' required/>
-                <label for="username" class="form__label">Make</label>
+                <input type="text" class="form__field" placeholder="Make" name="make" id='make' th:value="*{make}"/>
+                <label for="make" class="form__label">Make</label>
             </div>
             <div class="form__group field">
-                <input type="text" class="form__field" placeholder="model" name="email" id='model' required/>
+                <input type="text" class="form__field" placeholder="model" name="model" id='model' th:value="*{model}"/>
                 <label for="model" class="form__label">Model</label>
             </div>
             <div class="form__group field">
-                <input type="text" class="form__field" placeholder="Password" name="password" id='password'
-                       required/>
-                <label for="password" class="form__label">Series</label>
+                <input type="text" class="form__field" placeholder="Series" name="series" id='series'
+                       th:value = "*{series}"/>
+                <label for="series" class="form__label">Series</label>
             </div>
             <div class="form__group field">
-                <input type="file" class="form__field" placeholder="images" name="images"
-                       id='images' required/>
+                <input type="file" class="form__field" placeholder="Images" name="images"
+                       id='images'/>
                 <label for="images" class="form__label">Upload Image</label>
             </div>
             <div class="form__group field">
                 <input type="text" class="form__field" placeholder="price" name="price"
-                       id='price' required/>
+                       id='price' th:value="*{price}"/>
                 <label for="price" class="form__label">Price</label>
             </div>
             <div class="form__group field">
                 <input type="date" class="form__field" placeholder="year" name="year"
-                       id='year' required/>
+                       id='year' th:value="*{year}"/>
                 <label for="year" class="form__label">Year</label>
             </div>
 
@@ -79,7 +79,8 @@
                     <select id = "condition" name="condition" class = "form__select" aria-describedby="categoryHelpInline">
                         <option value = "" selected disabled>Condition</option>
 
-                        <option>
+                        <option th:each="condition : ${T(com.iliyan.autodeluxe.models.enums.Condition).values()}"
+                                th:value="${condition}" th:text="${condition}">
 
                         </option>
                     </select>

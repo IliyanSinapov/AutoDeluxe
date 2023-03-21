@@ -1,31 +1,42 @@
 package com.iliyan.autodeluxe.models.DTOs.view;
 
-import com.iliyan.autodeluxe.models.DTOs.models.CarImageModel;
-import com.iliyan.autodeluxe.models.entities.CarImage;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
+import com.iliyan.autodeluxe.models.enums.Condition;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.sql.Blob;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddCarModel {
-
-    private Long id;
+    @NotBlank
+    @NotNull
     private String make;
+    @NotBlank
+    @NotNull
     private String model;
+    @NotBlank
+    @NotNull
     private String series;
+    @Positive
+    @NotNull
     private BigDecimal price;
-    private List<CarImageModel> images;
+    @NotNull
+    private Blob images;
+    @NotBlank
+    @NotNull
     private String year;
-    private String condition;
-    private String mileage;
+    @NotNull
+    private Condition condition;
+    @Positive
+    @NotNull
+    private Integer mileage;
 }
