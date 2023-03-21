@@ -21,7 +21,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class UserModel {
 
-    private String id;
+    private Long id;
     private String username;
     private String email;
     private RoleType role;

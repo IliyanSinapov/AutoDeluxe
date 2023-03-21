@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoggedUser {
-    private String id;
+    private Long id;
     private String username;
 
     public boolean isLoggedIn() {

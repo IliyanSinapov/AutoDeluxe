@@ -2,6 +2,7 @@ package com.iliyan.autodeluxe.service;
 
 import com.iliyan.autodeluxe.models.DTOs.models.UserModel;
 import com.iliyan.autodeluxe.models.beans.LoggedUser;
+import com.iliyan.autodeluxe.models.entities.User;
 import com.iliyan.autodeluxe.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,9 @@ public class UserService {
 
     public boolean checkUserPassword(String password, UserModel userModel){
         return bCryptPasswordEncoder.matches(password, userModel.getPassword());
+    }
+
+    public User findById(Long id) {
+        return userRepository.findById(id).get();
     }
 }
