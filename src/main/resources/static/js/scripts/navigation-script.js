@@ -20,8 +20,20 @@ const dropdownIcon = dropdown.children[1];
 const activeDiv = document.querySelector(".active");
 const dropdownHeaderValue = dropdownHeader.textContent;
 
+dropdownIcon.addEventListener("mouseout", () => {
+    activeDiv.style.width = "10rem";
+})
+
+dropdownHeader.addEventListener("mouseout", () => {
+    activeDiv.style.width = "10rem";
+})
+
 dropdownHeader.addEventListener("mouseover", () => {
-    activeDiv.style.width = (dropdownHeaderValue.length * 1.4) + "rem";
+    activeDiv.style.width = (dropdownHeaderValue.length * 3) + "rem";
+})
+
+dropdownIcon.addEventListener("mouseover", () => {
+    activeDiv.style.width = (dropdownHeaderValue.length * 3) + "rem";
 })
 //endregion
 

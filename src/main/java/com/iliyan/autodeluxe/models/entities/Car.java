@@ -24,6 +24,8 @@ public class Car {
     private String series;
     @Column
     private BigDecimal price;
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CarImage> images;
     @Column(nullable = false)
     private String year;
     @Column(nullable = false)

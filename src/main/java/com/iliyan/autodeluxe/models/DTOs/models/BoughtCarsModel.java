@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import com.iliyan.autodeluxe.models.DTOs.models.SoldCarsModel;
 
 import java.util.List;
 

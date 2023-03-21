@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
+    />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+    <meta charset="UTF-8">
+    <title>Add Car</title>
+
+    <!--  This span is filled with <link> tags for css files!  -->
+    <span>
+        <!--  This span contains the css files for the navigation /desktop and mobile/  -->
+            <span id="navigation-css"></span>
+            <link rel="stylesheet" href="/css/styles/style.css">
+            <link rel="stylesheet" href="/css/styles/desktop-pages-with-form-style.css">
+        </span>
+
+    <!--  This span is filled with <script> tags for JavaScript files!  -->
+    <span>
+            <script src="/js/scripts/navigation-script.js" type="module"></script>
+            <script src="/js/scripts/form-page-script.js" type="module"></script>
+        </span>
+
+</head>
+<body>
+
+<div id="body-background">
+</div>
+
+<span th:include = "~{fragments/navbar}"></span>
+
+<div id="desktop-main-page" class="main-page-div">
+    <div class="register-form-container">
+        <form th:action = "@{/add/car}" th:method="POST" th:object="${addCarModel}">
+            <div class="form-header">
+                <h2>Add Car</h2>
+            </div>
+
+            <div class="form__group field">
+                <input type="text" class="form__field" placeholder="Username" name="username" id='username' required/>
+                <label for="username" class="form__label">Make</label>
+            </div>
+            <div class="form__group field">
+                <input type="text" class="form__field" placeholder="model" name="email" id='model' required/>
+                <label for="model" class="form__label">Model</label>
+            </div>
+            <div class="form__group field">
+                <input type="text" class="form__field" placeholder="Password" name="password" id='password'
+                       required/>
+                <label for="password" class="form__label">Series</label>
+            </div>
+            <div class="form__group field">
+                <input type="file" class="form__field" placeholder="images" name="images"
+                       id='images' required/>
+                <label for="images" class="form__label">Upload Image</label>
+            </div>
+            <div class="form__group field">
+                <input type="text" class="form__field" placeholder="price" name="price"
+                       id='price' required/>
+                <label for="price" class="form__label">Price</label>
+            </div>
+            <div class="form__group field">
+                <input type="date" class="form__field" placeholder="year" name="year"
+                       id='year' required/>
+                <label for="year" class="form__label">Year</label>
+            </div>
+
+            <div class="form__group field">
+                <div class = "select">
+                    <select id = "condition" name="condition" class = "form__select" aria-describedby="categoryHelpInline">
+                        <option value = "" selected disabled>Condition</option>
+
+                        <option>
+
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" href="#" class="register-button btn">Add Car</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
