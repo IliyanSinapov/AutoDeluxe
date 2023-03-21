@@ -21,8 +21,8 @@ public class CarModel {
     private String model;
     private String series;
     private BigDecimal price;
-    private Blob images;
+    private byte[] image;
     private String year;
     private Condition condition;
-    private String mileage;
+    private Integer mileage;
 }

@@ -29,14 +29,13 @@ public class AddCarModel {
     @Positive
     @NotNull
     private BigDecimal price;
-    @NotNull
-    private Blob images;
+    private byte[] image;
     @NotBlank
     @NotNull
     private String year;
     @NotNull
     private Condition condition;
-    @Positive
-    @NotNull
+//    @NotNull
+//    @Positive
     private Integer mileage;
 }

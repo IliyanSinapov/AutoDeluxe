@@ -28,11 +28,12 @@ public class Car {
     private BigDecimal price;
     @Lob
     @Column(length = 10 * 3880 * 2160)
-    private Blob images;
+    private byte[] image;
     @Column(nullable = false)
     private String year;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Condition condition;
     @Column
-    private String mileage;
+    private Integer mileage;
 }

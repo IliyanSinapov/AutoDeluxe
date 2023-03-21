@@ -108,7 +108,7 @@ select {
     padding: 0 .5em;
     color:#9b9b9b;
     cursor:pointer;
-    font-size: 1em;
+    font-size: 1.8rem;
     font-family: 'Open Sans', sans-serif;
     border: none;
     border-bottom: 2px #9b9b9b; !important;
@@ -119,7 +119,7 @@ select::-ms-expand {
 .select {
     position: relative;
     display: flex;
-    width: 20em;
+    width: 27em;
     height: 3em;
     line-height: 3;
     background: #5c6664;
