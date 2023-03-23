@@ -2,6 +2,7 @@ package com.iliyan.autodeluxe.web;
 
 import com.iliyan.autodeluxe.models.DTOs.view.UserLoginModel;
 import com.iliyan.autodeluxe.models.DTOs.view.UserRegisterModel;
+import com.iliyan.autodeluxe.models.beans.LoggedUser;
 import com.iliyan.autodeluxe.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +79,13 @@ public class AuthController {
 
         return "redirect:/";
     }
+
+    @PostMapping("/logout")
+    public String postMapping(){
+        this.authService.logoutUser();
+        return "redirect:/";
+    }
+
 
     //Model attributes
 

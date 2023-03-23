@@ -31,46 +31,58 @@
   </span>
 
   <span id="desktop-user">
-                    <nav class="navbar container">
-                        <a th:href="@{/}" class="nav-link">AutoDeluxe</a>
-                        <ul class="nav-list">
-                            <li class="nav-item">
-                                <a th:href="@{/}" class="nav-link">Home</a>
-                            </li>
+    <nav class="navbar container">
+        <a th:href="@{/}" class="nav-link">AutoDeluxe</a>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a th:href="@{/}" class="nav-link">Home</a>
+            </li>
 
-                            <th:block th:if = "${@loggedUser.isNotLoggedIn()}">
-                                <li class="nav-item">
-                                    <a th:href="@{/auth/register}" class="nav-link">Register</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a th:href="@{/auth/login}" class="nav-link">Login</a>
-                                </li>
-                            </th:block>
+            <th:block th:if = "${@loggedUser.isNotLoggedIn()}">
+                <li class="nav-item">
+                    <a th:href="@{/auth/register}" class="nav-link">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/auth/login}" class="nav-link">Login</a>
+                </li>
+            </th:block>
 
-                            <th:block th:classpath = "${@loggedUser.isLoggedIn()} ? 'dropdown-menu-logged-user' : 'dropdown-menu-not-logged-user'">
-                                <li class="nav-item dropdown">
-                                    <a class = "dropdown-header nav-link" th:text = "${@loggedUser.username}"></a>
-                                    <th:block th:if = "${@loggedUser.isLoggedIn()}">
-                                        <i class = "fa-solid fa-caret-down dropdown-icon"></i>
-                                    </th:block>
-                                    <ul class = "dropdown-menu">
-                                        <li class = "dropdown-item">
-                                            <a href="#" class = "nav-link"> Account</a>
-                                        </li>
+            <th:block th:if = "${@loggedUser.isLoggedIn()}">
+                <li class = "nav-item">
+                    <a class = "nav-link" th:href = "@{/car/add}">Add Car</a>
+                </li>
+            </th:block>
 
-                                        <li>
-                                            <a href="#" class = "nav-link">Settings</a>
-                                        </li>
+            <th:block>
+                <li class="nav-item dropdown">
+                    <a class = "dropdown-header nav-link" th:text = "${@loggedUser.username}"></a>
+                    <th:block th:if = "${@loggedUser.isLoggedIn()}">
+                        <i class = "fa-solid fa-caret-down dropdown-icon"></i>
+                    </th:block>
+                    <ul class = "dropdown-menu">
+                        <li class = "dropdown-item">
+                            <a href="#" class = "nav-link"> Account</a>
+                        </li>
 
-                                        <li>
-                                            <a href="#" class = "nav-link">Logout</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </th:block>
+                        <li class = "dropdown-item">
+                            <a href="#" class = "nav-link">Settings</a>
+                        </li>
+                    </ul>
+                </li>
+            </th:block>
 
-                            <div class="active"></div>
-                        </ul>
-                    </nav>
-                </span>
+            <th:block th:if = "${@loggedUser.isLoggedIn()}">
+                <li class="nav-item">
+                    <form th:action = "@{/auth/logout}" th:method = "POST" th:object = "${@loggedUser}">
+<!--                        <a th:href="@{/auth/logout}" class = "nav-link" id = "logout-btn">Logout</a>-->
+                        <input type="submit" value="Logout" class = "nav-link"
+                               style = "background: transparent; color: #fff; border: transparent; font-size: 1.5rem">
+                    </form>
+                </li>
+            </th:block>
+
+            <div class="active"></div>
+        </ul>
+    </nav>
+</span>
 </header>

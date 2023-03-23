@@ -86,4 +86,8 @@ public class AuthService {
                     .setUsername(loginCandidate.getUsername());
         }
     }
+
+    public void logoutUser() {
+        loggedUser.clearUser();
+    }
 }

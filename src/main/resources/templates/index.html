@@ -20,20 +20,67 @@
         <span>
         <!--  This span contains the css files for the navigation /desktop and mobile/  -->
             <span id = "navigation-css"></span>
-            <link rel="stylesheet" href="css/styles/style.css" >
+            <link rel="stylesheet" href="/css/styles/style.css" >
+            <link href="/css/styles/index-page-styles.css" rel="stylesheet">
+            <link href="/css/styles/filters-styles.css" rel="stylesheet">
             <script src="https://kit.fontawesome.com/09640ec319.js" crossorigin="anonymous"></script>
         </span>
 
         <!--  This span is filled with <script> tags for JavaScript files!  -->
         <span>
-            <script src="js/scripts/navigation-script.js" type="module"></script>
+            <script src="/js/scripts/navigation-script.js" type="module"></script>
+<!--            <script src = "/js/scripts/index-page-script.js" type = "module"></script>-->
         </span>
 
     </head>
 
     <body>
 
-    <span th:include = "~{fragments/navbar}"></span>
+    <span th:insert = "~{fragments/navbar}"></span>
 
+    <div class = "welcome-index-div">
+        <img src = "/images/welcome-image.jpg" alt="" class = "welcome-image">
+        <center>
+            <h1 class = "welcome-header">Welcome to AutoDeluxe!</h1>
+            <h3>Please Login</h3>
+        </center>
+    </div>
+
+    <span class = "main-page">
+
+        <div class = "filters-container">
+
+        </div>
+
+    </span>
+
+<!--    show welcome page    -->
+    <script th:type="module">
+        let loggedUser;
+        const welcomeDiv = document.querySelector(".welcome-index-div");
+        const mainPage = document.querySelector(".main-page");
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('GET', '/api/logged-user');
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                loggedUser = JSON.parse(xhr.responseText);
+
+                if (loggedUser.id != null){
+                    mainPage.style.display = "block";
+                    welcomeDiv.style.display = "none";
+                }
+            } else {
+                console.log('Request failed.  Returned status of ' + xhr.status);
+
+                if (loggedUser.id == null){
+                    mainPage.style.display = "none";
+                    welcomeDiv.style.display = "block";
+                }
+            }
+        };
+        xhr.send();
+    </script>
     </body>
 </html>

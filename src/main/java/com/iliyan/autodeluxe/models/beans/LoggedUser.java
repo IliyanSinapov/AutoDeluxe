@@ -20,4 +20,9 @@ public class LoggedUser {
     public boolean isNotLoggedIn() {
         return id == null;
     }
+
+    public void clearUser() {
+        this.id = null;
+        this.username = null;
+    }
 }
