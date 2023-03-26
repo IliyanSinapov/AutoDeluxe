@@ -10,3 +10,147 @@
 .welcome-header {
     margin-top: 15rem;
 }
+.main-page {
+    display: flex;
+}
+
+.car-offers {
+    padding: 4rem;
+
+    overflow-y: scroll;
+
+    max-height: 93vh;
+}
+
+.offer {
+
+    background-color: #1a1d24;
+
+    margin: 2rem;
+    padding: 1.5rem;
+
+    width: 73vw;
+    height: 20vh;
+
+    border: transparent;
+    border-radius: 1rem;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 7rem 1fr;
+}
+
+.offer-price {
+    text-align: right;
+}
+
+.offer-image {
+    max-width: 32rem;
+    border: transparent;
+    border-radius: 0.6rem;
+}
+
+.offer-description {
+    grid-column: 2;
+    font-size: 1.5rem;
+}
+
+.offer-button {
+    width: 9rem;
+    height: 4rem;
+
+    justify-self: right;
+    align-self: end;
+
+    font-size: 1.4rem;
+    color: #fff;
+
+    background: #25282f;
+    border: transparent;
+    border-radius: 1rem;
+}
+
+.offer-button:hover {
+    background: #353a44;
+    box-shadow: 0.1rem 0 1rem 0.25rem #3e444f;
+}
+
+.filter-box {
+    width: 20vw;
+    height: 93vh;
+    padding: 3rem;
+    background-color: #1a1d24;
+}
+
+.filter-header {
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+}
+
+select {
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    appearance:none;
+    outline:0;
+    box-shadow:none;
+    background: #25282f; !important;
+    background-image: none;
+    flex: 1;
+    padding: 0 .5em;
+    color:#9b9b9b;
+    cursor:pointer;
+    font-size: 1.8rem;
+    font-family: 'Open Sans', sans-serif;
+    border: none;
+    border-bottom: 2px #9b9b9b; !important;
+}
+
+select::-ms-expand {
+    display: none;
+}
+.select {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 3em;
+    line-height: 3;
+    background: #5c6664;
+    overflow: hidden;
+    border-radius: .25em;
+}
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #2b2e2e;
+    cursor:pointer;
+    pointer-events:none;
+    transition:.25s all ease;
+}
+.select:hover::after {
+    color: #23b499;
+}
+
+.filter-button {
+    background: #363a44;
+    background-size: 100% 100%;
+    animation: gradient 15s ease infinite;
+    position: relative;
+    margin-top: 5rem;
+    left: 50%;
+    transform: translate(-50%);
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 2rem;
+    border: transparent;
+    border-radius: 0.6rem;
+    height: 4rem;
+    width: 12rem;
+
+    color: #fff;
+
+    /*box-shadow: 0.1rem 0 1rem 0.25rem #046529;*/
+}

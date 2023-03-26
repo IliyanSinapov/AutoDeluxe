@@ -21,15 +21,15 @@
         <!--  This span contains the css files for the navigation /desktop and mobile/  -->
             <span id = "navigation-css"></span>
             <link rel="stylesheet" href="/css/styles/style.css" >
-            <link href="/css/styles/index-page-styles.css" rel="stylesheet">
+            <link href="/css/styles/desktop-pages-with-form-style.css" rel="stylesheet">
             <link href="/css/styles/filters-styles.css" rel="stylesheet">
             <script src="https://kit.fontawesome.com/09640ec319.js" crossorigin="anonymous"></script>
+            <link href="/css/styles/index-page-styles.css" rel="stylesheet">
         </span>
 
         <!--  This span is filled with <script> tags for JavaScript files!  -->
         <span>
             <script src="/js/scripts/navigation-script.js" type="module"></script>
-<!--            <script src = "/js/scripts/index-page-script.js" type = "module"></script>-->
         </span>
 
     </head>
@@ -46,13 +46,71 @@
         </center>
     </div>
 
-    <span class = "main-page">
+    <span class="main-page">
 
-        <div class = "filters-container">
+            <div class="filter-box">
 
-        </div>
+                <form class="filter-form">
+                    <div class="form__group field">
+                        <p class="filter-header">Make</p>
+                        <div class="select">
+                            <select id="make" name="make" class="form__select" aria-describedby="categoryHelpInline">
+                                <option value="" selected disabled>Make</option>
+                                <option>Ford</option>
+                                <option>Chevrolet</option>
+                                <option>Peugeot</option>
+                                <option>Renault</option>
+                                <option>Dodge</option>
+                                <option>Toyota</option>
+                            </select>
+                        </div>
+                    </div>
 
-    </span>
+                    <div class="form__group field">
+                        <p class="filter-header">Model</p>
+                        <div class="select">
+                            <select id="model" name="model" class="form__select" aria-describedby="categoryHelpInline">
+                                <option value="" selected disabled>Model</option>
+                                <option>Fiesta</option>
+                                <option>Focus</option>
+                                <option>Mustang</option>
+                                <option>Camaro</option>
+                                <option>Challenger</option>
+                                <option>Charger</option>
+                                <option>Supra</option>
+                                <option>Corolla</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form__group field">
+                        <input type="date" class="form__field" placeholder="year" name="year"
+                               id='year'/>
+                        <label for="year" class="form__label">Year</label>
+                    </div>
+
+                    <button type="submit" class="filter-button btn">
+                        Filter
+                    </button>
+                </form>
+
+            </div>
+
+            <div class="car-offers">
+                <div class="offer">
+                    <img src="/images/welcome-image.jpg" alt="" class="offer-image">
+                    <h3 class="offer-header">Chevrolet Camaro</h3>
+                    <h3 class="offer-price">16, 923 euro</h3>
+                    <p class = "offer-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra lobortis nisi, ut porttitor est sodales sed. Cras sed commodo nisl. Donec porta tincidunt quam, a commodo est varius non. Quisque arcu nulla, facilisis eu tellus vitae, malesuada sodales nunc. Vivamus vitae tellus quam.</p>
+                    <button class = "offer-button btn" href = "#">Go To Offer</button>
+                </div>
+                <div class="offer"></div>
+                <div class="offer"></div>
+                <div class="offer"></div>
+                <div class="offer"></div>
+                <div class="offer"></div>
+            </div>
+        </span>
 
 <!--    show welcome page    -->
     <script th:type="module">
