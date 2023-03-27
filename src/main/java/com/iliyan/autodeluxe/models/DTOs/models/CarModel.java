@@ -22,6 +22,7 @@ public class CarModel {
     private String series;
     private BigDecimal price;
     private byte[] image;
+    private String imageType;
     private String year;
     private Condition condition;
     private Integer mileage;

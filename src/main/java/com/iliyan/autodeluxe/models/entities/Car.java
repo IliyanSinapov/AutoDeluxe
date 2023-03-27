@@ -38,4 +38,6 @@ public class Car {
     private Integer mileage;
     @Column
     private String description;
+    @Column
+    private String imageType;
 }

@@ -97,45 +97,75 @@
             </div>
 
             <div class="car-offers">
-                <div th:each = "car : ${cars}">
-                    <div class="offer">
-                        <img th:src="@{'data:image;base64,' + car.imageData}" alt="" class="offer-image">
-                        <h3 class="offer-header" th:text = "${car.make} + ' ' ${car.model} + ' ' ${car.series}"></h3>
-                        <h3 class="offer-price" th:text="${car.price} + ' euro'"></h3>
-                        <p class = "offer-description" th:text="${car.description}"></p>
-                        <button class = "offer-button btn" th:href = "@{/car/car.id}">Go To Offer</button>
-                    </div>
-                </div>
+<!--                <div th:each = "car : ${cars}">-->
+<!--                    <div class="offer">-->
+<!--                        <img th:src="@{'data:image;base64,' + car.imageData}" alt="" class="offer-image">-->
+<!--                        <h3 class="offer-header" th:text = "${car.make} + ' ' ${car.model} + ' ' ${car.series}"></h3>-->
+<!--                        <h3 class="offer-price" th:text="${car.price} + ' euro'"></h3>-->
+<!--                        <p class = "offer-description" th:text="${car.description}"></p>-->
+<!--                        <button class = "offer-button btn" th:href = "@{/car/car.id}">Go To Offer</button>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </span>
 
-<!--    show welcome page    -->
-<!--    <script th:type="module">-->
-<!--        let loggedUser;-->
-<!--        const welcomeDiv = document.querySelector(".welcome-index-div");-->
-<!--        const mainPage = document.querySelector(".main-page");-->
-<!--        let xhr = new XMLHttpRequest();-->
 
-<!--        xhr.open('GET', '/api/logged-user');-->
+    <script th:type="module">
+        // Make a request to your REST API
+        fetch('/api/cars')
+            .then(response => response.json())
+            .then(data => {
+                // Get a reference to the container where you want to display the data
+                const offerContainer = document.querySelector('.car-offers');
 
-<!--        xhr.onload = function() {-->
-<!--            if (xhr.status === 200) {-->
-<!--                loggedUser = JSON.parse(xhr.responseText);-->
+                // Loop through the data and create an element for each car
+                data.forEach(car => {
+                    // Create a new div element for the car
+                    const offerDiv = document.createElement('div');
+                    offerDiv.className = 'offer';
 
-<!--                if (loggedUser.id != null){-->
-<!--                    mainPage.style.display = "block";-->
-<!--                    welcomeDiv.style.display = "none";-->
-<!--                }-->
-<!--            } else {-->
-<!--                console.log('Request failed.  Returned status of ' + xhr.status);-->
+                    // Create an image element for the car's photo
+                    const image = document.createElement('img');
+                    image.src = `data:${car.imageType};base64,${car.image}`;
+                    image.className = "offer-image"
+                    offerDiv.appendChild(image);
 
-<!--                if (loggedUser.id == null){-->
-<!--                    mainPage.style.display = "none";-->
-<!--                    welcomeDiv.style.display = "block";-->
-<!--                }-->
-<!--            }-->
-<!--        };-->
-<!--        xhr.send();-->
-<!--    </script>-->
+                    // Create a heading for the car's make and model
+                    const heading = document.createElement('h3');
+                    heading.textContent = `${car.make} ${car.model} ${car.series}`;
+                    heading.className = "offer-header"
+                    offerDiv.appendChild(heading);
+
+                    // Create a heading for the car's price
+                    const price = document.createElement('h3');
+                    price.textContent = `${car.price} euro`;
+                    price.className = "offer-price"
+                    offerDiv.appendChild(price);
+
+                    // Create a heading for the car's condition
+                    const condition = document.createElement("h2");
+                    condition.textContent = `${car.condition}`;
+                    condition.className = "offer-condition";
+                    offerDiv.appendChild(condition);
+
+                    // Create a paragraph element for the car's description
+                    const description = document.createElement('p');
+                    description.textContent = car.description;
+                    description.className = "offer-description"
+                    offerDiv.appendChild(description);
+
+                    // Create a button for the offer
+                    const button = document.createElement("a");
+                    button.textContent = "Go To Offer";
+                    button.classList.add("btn");
+                    button.classList.add("offer-button");
+                    button.setAttribute("th:href", `@{/car/${car.id}`)
+
+                    // Add the new car div to the container
+                    offerContainer.appendChild(offerDiv);
+                });
+            })
+            .catch(error => console.error(error));
+    </script>
     </body>
 </html>

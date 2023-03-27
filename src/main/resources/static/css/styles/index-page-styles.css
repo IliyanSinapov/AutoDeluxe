@@ -46,6 +46,7 @@
 
 .offer-image {
     max-width: 91%;
+    max-height: 17vh      ;
     border: transparent;
     border-radius: 0.6rem;
 }
@@ -53,6 +54,13 @@
 .offer-description {
     grid-column: 2;
     font-size: 1.7vh;
+}
+
+.offer-condition {
+    grid-row: 1;
+    grid-column: 3;
+    justify-self: right;
+    color: #5e5e5e;
 }
 
 .offer-button {

@@ -19,6 +19,7 @@ public class CarModelToDisplay {
     private String series;
     private BigDecimal price;
     private String image;
+    private String imageType;
     private String year;
     private Condition condition;
     private Integer mileage;

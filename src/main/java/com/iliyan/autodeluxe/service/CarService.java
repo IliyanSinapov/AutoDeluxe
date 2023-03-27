@@ -8,6 +8,7 @@ import com.iliyan.autodeluxe.models.entities.Car;
 import com.iliyan.autodeluxe.models.entities.User;
 import com.iliyan.autodeluxe.repository.CarRepository;
 import com.iliyan.autodeluxe.repository.UserRepository;
+import org.apache.tika.Tika;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,9 @@ public class CarService {
         if (loggedUser.isLoggedIn()){
 
             Car car = this.modelMapper.map(addCarModel, Car.class);
+            Tika tika = new Tika();
+            String imageType = tika.detect(car.getImage());
+            car.setImageType(imageType);
             User user = userRepository.findById(loggedUser.getId()).orElseThrow(() -> new RuntimeException("User not found"));
             user.getCarsForSale().getCars().add(car);
             userRepository.save(user);
