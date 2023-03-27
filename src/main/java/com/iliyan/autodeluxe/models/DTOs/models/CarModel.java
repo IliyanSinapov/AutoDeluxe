@@ -25,4 +25,5 @@ public class CarModel {
     private String year;
     private Condition condition;
     private Integer mileage;
+    private String description;
 }

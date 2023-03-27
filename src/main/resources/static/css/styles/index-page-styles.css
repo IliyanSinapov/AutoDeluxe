@@ -45,14 +45,14 @@
 }
 
 .offer-image {
-    max-width: 32rem;
+    max-width: 91%;
     border: transparent;
     border-radius: 0.6rem;
 }
 
 .offer-description {
     grid-column: 2;
-    font-size: 1.5rem;
+    font-size: 1.7vh;
 }
 
 .offer-button {

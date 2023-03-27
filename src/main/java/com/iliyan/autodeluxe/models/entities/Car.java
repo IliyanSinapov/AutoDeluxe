@@ -36,4 +36,6 @@ public class Car {
     private Condition condition;
     @Column
     private Integer mileage;
+    @Column
+    private String description;
 }

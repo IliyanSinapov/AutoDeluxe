@@ -141,6 +141,27 @@ select::-ms-expand {
     color: #23b499;
 }
 
+textarea {
+    margin-top: 1rem;
+
+    display: block;
+    padding: 5px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 2rem;
+
+    border-bottom: 2px solid #9b9b9b;
+}
+
+textarea:focus {
+    padding-bottom: 6px;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #11998e,#38ef7d);
+    border-image-slice: 1;
+    outline: none;
+}
+
 @keyframes gradient {
     0% {
         background-position: 0% 50%;

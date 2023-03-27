@@ -38,7 +38,7 @@
 
     <span th:insert = "~{fragments/navbar}"></span>
 
-    <div class = "welcome-index-div">
+    <div th:if = "${@loggedUser.isNotLoggedIn()}" class = "welcome-index-div">
         <img src = "/images/welcome-image.jpg" alt="" class = "welcome-image">
         <center>
             <h1 class = "welcome-header">Welcome to AutoDeluxe!</h1>
@@ -46,7 +46,7 @@
         </center>
     </div>
 
-    <span class="main-page">
+    <span th:if = "${@loggedUser.isLoggedIn()}" class="main-page">
 
             <div class="filter-box">
 
@@ -97,48 +97,45 @@
             </div>
 
             <div class="car-offers">
-                <div class="offer">
-                    <img src="/images/welcome-image.jpg" alt="" class="offer-image">
-                    <h3 class="offer-header">Chevrolet Camaro</h3>
-                    <h3 class="offer-price">16, 923 euro</h3>
-                    <p class = "offer-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra lobortis nisi, ut porttitor est sodales sed. Cras sed commodo nisl. Donec porta tincidunt quam, a commodo est varius non. Quisque arcu nulla, facilisis eu tellus vitae, malesuada sodales nunc. Vivamus vitae tellus quam.</p>
-                    <button class = "offer-button btn" href = "#">Go To Offer</button>
+                <div th:each = "car : ${cars}">
+                    <div class="offer">
+                        <img th:src="@{'data:image;base64,' + car.imageData}" alt="" class="offer-image">
+                        <h3 class="offer-header" th:text = "${car.make} + ' ' ${car.model} + ' ' ${car.series}"></h3>
+                        <h3 class="offer-price" th:text="${car.price} + ' euro'"></h3>
+                        <p class = "offer-description" th:text="${car.description}"></p>
+                        <button class = "offer-button btn" th:href = "@{/car/car.id}">Go To Offer</button>
+                    </div>
                 </div>
-                <div class="offer"></div>
-                <div class="offer"></div>
-                <div class="offer"></div>
-                <div class="offer"></div>
-                <div class="offer"></div>
             </div>
         </span>
 
 <!--    show welcome page    -->
-    <script th:type="module">
-        let loggedUser;
-        const welcomeDiv = document.querySelector(".welcome-index-div");
-        const mainPage = document.querySelector(".main-page");
-        let xhr = new XMLHttpRequest();
+<!--    <script th:type="module">-->
+<!--        let loggedUser;-->
+<!--        const welcomeDiv = document.querySelector(".welcome-index-div");-->
+<!--        const mainPage = document.querySelector(".main-page");-->
+<!--        let xhr = new XMLHttpRequest();-->
 
-        xhr.open('GET', '/api/logged-user');
+<!--        xhr.open('GET', '/api/logged-user');-->
 
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                loggedUser = JSON.parse(xhr.responseText);
+<!--        xhr.onload = function() {-->
+<!--            if (xhr.status === 200) {-->
+<!--                loggedUser = JSON.parse(xhr.responseText);-->
 
-                if (loggedUser.id != null){
-                    mainPage.style.display = "block";
-                    welcomeDiv.style.display = "none";
-                }
-            } else {
-                console.log('Request failed.  Returned status of ' + xhr.status);
+<!--                if (loggedUser.id != null){-->
+<!--                    mainPage.style.display = "block";-->
+<!--                    welcomeDiv.style.display = "none";-->
+<!--                }-->
+<!--            } else {-->
+<!--                console.log('Request failed.  Returned status of ' + xhr.status);-->
 
-                if (loggedUser.id == null){
-                    mainPage.style.display = "none";
-                    welcomeDiv.style.display = "block";
-                }
-            }
-        };
-        xhr.send();
-    </script>
+<!--                if (loggedUser.id == null){-->
+<!--                    mainPage.style.display = "none";-->
+<!--                    welcomeDiv.style.display = "block";-->
+<!--                }-->
+<!--            }-->
+<!--        };-->
+<!--        xhr.send();-->
+<!--    </script>-->
     </body>
 </html>
