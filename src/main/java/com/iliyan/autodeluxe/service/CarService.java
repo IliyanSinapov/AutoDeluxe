@@ -1,7 +1,5 @@
 package com.iliyan.autodeluxe.service;
 
-import com.iliyan.autodeluxe.models.DTOs.models.CarModel;
-import com.iliyan.autodeluxe.models.DTOs.models.UserModel;
 import com.iliyan.autodeluxe.models.DTOs.view.AddCarModel;
 import com.iliyan.autodeluxe.models.beans.LoggedUser;
 import com.iliyan.autodeluxe.models.entities.Car;
@@ -21,14 +19,16 @@ public class CarService {
     private final LoggedUser loggedUser;
     private final UserService userService;
     private final UserRepository userRepository;
+    private final Tika tika;
 
     @Autowired
-    public CarService(ModelMapper modelMapper, CarRepository carRepository, LoggedUser loggedUser, UserService userService, UserRepository userRepository) {
+    public CarService(ModelMapper modelMapper, CarRepository carRepository, LoggedUser loggedUser, UserService userService, UserRepository userRepository, Tika tika) {
         this.modelMapper = modelMapper;
         this.carRepository = carRepository;
         this.loggedUser = loggedUser;
         this.userService = userService;
         this.userRepository = userRepository;
+        this.tika = tika;
     }
 
     public void addCar(AddCarModel addCarModel) {
@@ -36,8 +36,7 @@ public class CarService {
         if (loggedUser.isLoggedIn()){
 
             Car car = this.modelMapper.map(addCarModel, Car.class);
-            Tika tika = new Tika();
-            String imageType = tika.detect(car.getImage());
+            String imageType = this.tika.detect(car.getImage());
             car.setImageType(imageType);
             User user = userRepository.findById(loggedUser.getId()).orElseThrow(() -> new RuntimeException("User not found"));
             user.getCarsForSale().getCars().add(car);

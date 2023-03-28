@@ -111,61 +111,40 @@
 
 
     <script th:type="module">
+        // Cache the container element
+        const offerContainer = document.querySelector('.car-offers');
+
+        // Handle the click event on the container
+        offerContainer.addEventListener('click', function(event) {
+            const target = event.target;
+            if (target.classList.contains('offer-button')) {
+                window.location.href = target.getAttribute('href');
+            }
+        });
+
         // Make a request to your REST API
         fetch('/api/cars')
             .then(response => response.json())
             .then(data => {
-                // Get a reference to the container where you want to display the data
-                const offerContainer = document.querySelector('.car-offers');
+                // Create an HTML string that contains all the elements
+                const html = data.map(car => `
+                <div class="offer">
+                    <img src="data:${car.imageType};base64,${car.image}" class="offer-image">
+                    <h3 class="offer-header">${car.make} ${car.model} ${car.series}</h3>
+                    <h3 class="offer-price">${car.price} euro</h3>
+                    <h2 class="offer-condition">${car.condition}</h2>
+                    <p class="offer-description">${car.description}</p>
+                    <div class="offer-button-background">
+                        <a href="/car/${car.id}" class="offer-button btn">Go To Offer</a>
+                    </div>
+                </div>
+            `).join('');
 
-                // Loop through the data and create an element for each car
-                data.forEach(car => {
-                    // Create a new div element for the car
-                    const offerDiv = document.createElement('div');
-                    offerDiv.className = 'offer';
-
-                    // Create an image element for the car's photo
-                    const image = document.createElement('img');
-                    image.src = `data:${car.imageType};base64,${car.image}`;
-                    image.className = "offer-image"
-                    offerDiv.appendChild(image);
-
-                    // Create a heading for the car's make and model
-                    const heading = document.createElement('h3');
-                    heading.textContent = `${car.make} ${car.model} ${car.series}`;
-                    heading.className = "offer-header"
-                    offerDiv.appendChild(heading);
-
-                    // Create a heading for the car's price
-                    const price = document.createElement('h3');
-                    price.textContent = `${car.price} euro`;
-                    price.className = "offer-price"
-                    offerDiv.appendChild(price);
-
-                    // Create a heading for the car's condition
-                    const condition = document.createElement("h2");
-                    condition.textContent = `${car.condition}`;
-                    condition.className = "offer-condition";
-                    offerDiv.appendChild(condition);
-
-                    // Create a paragraph element for the car's description
-                    const description = document.createElement('p');
-                    description.textContent = car.description;
-                    description.className = "offer-description"
-                    offerDiv.appendChild(description);
-
-                    // Create a button for the offer
-                    const button = document.createElement("a");
-                    button.textContent = "Go To Offer";
-                    button.classList.add("btn");
-                    button.classList.add("offer-button");
-                    button.setAttribute("th:href", `@{/car/${car.id}`)
-
-                    // Add the new car div to the container
-                    offerContainer.appendChild(offerDiv);
-                });
+                // Append the HTML string to the container
+                offerContainer.innerHTML = html;
             })
             .catch(error => console.error(error));
     </script>
+
     </body>
 </html>

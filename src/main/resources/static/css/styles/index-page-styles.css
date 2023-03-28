@@ -19,7 +19,13 @@
 
     overflow-y: scroll;
 
-    max-height: 93vh;
+    max-height: 91vh;
+
+    display: block;
+}
+
+.car-offers:empty {
+    display: none;
 }
 
 .offer {
@@ -41,12 +47,14 @@
 }
 
 .offer-price {
+    grid-row: 1;
+    grid-column: 3;
     text-align: right;
 }
 
 .offer-image {
     max-width: 91%;
-    max-height: 17vh      ;
+    max-height: 16.5vh      ;
     border: transparent;
     border-radius: 0.6rem;
 }
@@ -59,11 +67,12 @@
 .offer-condition {
     grid-row: 1;
     grid-column: 3;
+    align-self: end;
     justify-self: right;
     color: #5e5e5e;
 }
 
-.offer-button {
+.offer-button-background {
     width: 9rem;
     height: 4rem;
 
@@ -76,6 +85,16 @@
     background: #25282f;
     border: transparent;
     border-radius: 1rem;
+
+    display: flex;
+
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.offer-button {
+    line-height: 1.5;
 }
 
 .offer-button:hover {
@@ -85,7 +104,7 @@
 
 .filter-box {
     width: 20vw;
-    height: 93vh;
+    height: 91vh;
     padding: 3rem;
     background-color: #1a1d24;
 }

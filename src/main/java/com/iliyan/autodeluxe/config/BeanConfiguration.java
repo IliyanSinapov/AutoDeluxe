@@ -1,6 +1,7 @@
 package com.iliyan.autodeluxe.config;
 
 import com.iliyan.autodeluxe.models.beans.LoggedUser;
+import org.apache.tika.Tika;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,10 @@ public class BeanConfiguration {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public Tika tika () {
+        return new Tika();
+    }
     @Bean
     public LoggedUser loggedUser() {
         return new LoggedUser();
