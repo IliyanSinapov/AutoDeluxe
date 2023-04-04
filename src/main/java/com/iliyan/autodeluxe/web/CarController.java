@@ -56,6 +56,10 @@ public class CarController {
         return "redirect:/";
     }
 
+    @GetMapping("/{id}")
+    public String getCarOffer(@PathVariable String id) {
+        return "car-offer";
+    }
 
     //Model attributes
 

@@ -3,7 +3,10 @@ package com.iliyan.autodeluxe.web;
 import com.iliyan.autodeluxe.models.DTOs.models.CarModel;
 import com.iliyan.autodeluxe.models.DTOs.models.UserModel;
 import com.iliyan.autodeluxe.models.DTOs.view.CarModelToDisplay;
+import com.iliyan.autodeluxe.models.DTOs.view.CarOfferModel;
 import com.iliyan.autodeluxe.models.beans.LoggedUser;
+import com.iliyan.autodeluxe.models.entities.Car;
+import com.iliyan.autodeluxe.models.enums.Condition;
 import com.iliyan.autodeluxe.repository.CarRepository;
 import com.iliyan.autodeluxe.service.UserService;
 import org.apache.tika.Tika;
@@ -11,11 +14,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -87,6 +93,42 @@ public class RestfulController {
         return null;
     }
     //endregion
+
+    @GetMapping("/cars/{id}")
+    public CarOfferModel getOffer(@PathVariable String id) {
+
+
+        if (loggedUser.isLoggedIn()) {
+
+            CarOfferModel car = new CarOfferModel();
+            UserModel currentUser = this.modelMapper.map(this.userService.findById(loggedUser.getId()), UserModel.class);
+
+            Car carFromDB = this.carRepository.findById(Long.parseLong(id)).get();
+            CarModel carModel = this.modelMapper.map(carFromDB, CarModel.class);
+
+            if (!currentUserOwnsCar(currentUser, carModel)) {
+                String imageData = Base64.getEncoder().encodeToString(carModel.getImage());
+                String imageType = this.tika.detect(carModel.getImage());
+
+                car.setId(carModel.getId());
+                car.setMake(carModel.getMake());
+                car.setModel(carModel.getModel());
+                car.setSeries(carModel.getSeries());
+                car.setMileage(carModel.getMileage());
+                car.setCondition(carModel.getCondition());
+                car.setDescription(carModel.getDescription());
+                car.setImage(imageData);
+                car.setPrice(carModel.getPrice());
+                car.setYear(carModel.getYear());
+                car.setImageType(imageType);
+                car.setUsername(currentUser.getUsername());
+                car.setEmail(currentUser.getEmail());
+
+                return car;
+            }
+        }
+        return null;
+    }
 
     private boolean currentUserOwnsCar(UserModel currentUser, CarModel car) {
         return currentUser.getCarsForSale().getCars().contains(car)

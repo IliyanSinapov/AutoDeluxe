@@ -14,7 +14,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
         <meta charset="UTF-8">
-        <title>Home</title>
+        <title>Offer</title>
 
         <!--  This span is filled with <link> tags for css files!  -->
         <span>
@@ -111,10 +111,8 @@
 
 
     <script th:type="module">
-        // Cache the container element
         const offerContainer = document.querySelector('.car-offers');
 
-        // Handle the click event on the container
         offerContainer.addEventListener('click', function(event) {
             const target = event.target;
             if (target.classList.contains('offer-button')) {
@@ -126,7 +124,6 @@
         fetch('/api/cars')
             .then(response => response.json())
             .then(data => {
-                // Create an HTML string that contains all the elements
                 const html = data.map(car => `
                 <div class="offer">
                     <img src="data:${car.imageType};base64,${car.image}" class="offer-image">
@@ -142,6 +139,7 @@
 
                 // Append the HTML string to the container
                 offerContainer.innerHTML = html;
+                console.log(data);
             })
             .catch(error => console.error(error));
     </script>

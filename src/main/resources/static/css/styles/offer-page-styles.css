@@ -1,0 +1,64 @@
+.main-container {
+    display: grid;
+    grid-gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    max-height: 91vh;
+    padding: 4rem;
+    overflow-y: scroll;
+}
+
+.car-offer-image {
+    grid-column: 1;
+    max-width: 100%;
+
+    border: transparent;
+    border-radius: 1.7rem;
+}
+
+.offer-elements {
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 1fr 4fr 1fr;
+}
+
+.condition {
+    color: #727272;
+}
+
+.buy-form {
+    justify-self: right;
+    align-self: end;
+}
+
+.seller-div {
+    position: relative;
+    top: 4rem;
+    justify-self: left;
+    align-self: end;
+
+    color: #727272;
+}
+
+.buy-car-btn {
+
+    position: relative;
+    top: -1rem;
+
+    background: #1a1d24;
+    border: transparent;
+    border-radius: 2rem;
+
+    width: 14rem;
+    height: 6rem;
+
+    color: #fff;
+
+    font-size: 1.7rem;
+}
+
+.buy-car-btn:hover {
+    box-shadow: 0.4rem 0 1rem 0.25rem #1a1d24;
+}
