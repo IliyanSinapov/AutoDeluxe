@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta
-			name="viewport"
-			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-	/>
+  <meta
+          name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  />
 
-	<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
-	/>
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
+  />
 
-	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
-	<meta charset="UTF-8">
-	<title>Bought Cars</title>
+  <meta charset="UTF-8">
+  <title>Cars For Sale</title>
 
-	<span>
+  <span>
             <span id="navigation-css"></span>
             <link rel="stylesheet" href="/css/styles/style.css">
             <link rel="stylesheet" href="/css/styles/desktop-pages-with-form-style.css">
@@ -25,7 +25,7 @@
             <script src="https://kit.fontawesome.com/09640ec319.js" crossorigin="anonymous"></script>
         </span>
 
-	<span>
+  <span>
         <script src="/js/scripts/navigation-script.js" type="module"></script>
     </span>
 
@@ -55,19 +55,19 @@
 <script src = "/js/scripts/account-page.js"></script>
 
 <script th:type="module">
-	const offerContainer = document.querySelector('.car-offers');
+  const offerContainer = document.querySelector('.car-offers');
 
-	offerContainer.addEventListener('click', function(event) {
-		const target = event.target;
-		if (target.classList.contains('offer-button')) {
-			window.location.href = target.getAttribute('href');
-		}
-	});
+  offerContainer.addEventListener('click', function(event) {
+    const target = event.target;
+    if (target.classList.contains('offer-button')) {
+      window.location.href = target.getAttribute('href');
+    }
+  });
 
-	fetch('/api/cars/bought-cars')
-		.then(response => response.json())
-		.then(data => {
-			const html = data.map(car => `
+  fetch('/api/cars/cars-for-sale')
+          .then(response => response.json())
+          .then(data => {
+            const html = data.map(car => `
                 <div class="offer">
                     <img src="data:${car.imageType};base64,${car.image}" class="offer-image">
                     <h3 class="offer-header">${car.make} ${car.model} ${car.series}</h3>
@@ -82,10 +82,10 @@
                 </div>
             `).join('');
 
-			offerContainer.innerHTML = html;
-			console.log(data);
-		})
-		.catch(error => console.error(error));
+            offerContainer.innerHTML = html;
+            console.log(data);
+          })
+          .catch(error => console.error(error));
 </script>
 </body>
 </html>

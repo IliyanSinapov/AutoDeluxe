@@ -20,6 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -48,7 +51,7 @@ public class AuthService {
         this.loggedUser = loggedUser;
     }
 
-    public void registerUser(UserRegisterModel userRegister) {
+    public void registerUser(UserRegisterModel userRegister) throws IOException {
 
         UserModel userModel = this.modelMapper.map(userRegister, UserModel.class);
 
@@ -59,12 +62,16 @@ public class AuthService {
         CarsForSaleModel carsForSaleModel = new CarsForSaleModel();
         carsForSaleModel.setCars(new ArrayList<>());
 
+        Path imagePath = Path.of("src/main/resources/static/images/no_user_image.jpg");
+        byte[] imageData = Files.readAllBytes(imagePath);
+
         userModel.setCreatedOn(new Date());
         userModel.setBoughtCars(boughtCarsModel);
         userModel.setCarsForSale(carsForSaleModel);
         userModel.setSoldCars(soldCarsModel);
         userModel.setPassword(bCryptPasswordEncoder.encode(userModel.getPassword()));
         userModel.setRole(RoleType.USER);
+        userModel.setUserImage(imageData);
 
         boughtCarsModel.setUser(userModel);
         soldCarsModel.setUser(userModel);

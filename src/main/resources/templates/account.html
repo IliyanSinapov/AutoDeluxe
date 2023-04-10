@@ -39,10 +39,10 @@
 
     <span>
         <div class="filter-box">
-            <div class="page-link-container"><a class="page-link">Account</a></div>
-            <div class="page-link-container"><a class="page-link">Bought Cars</a></div>
-            <div class="page-link-container"><a class="page-link">Sold Cars</a></div>
-            <div class="page-link-container"><a class="page-link">Cars For Sale</a></div>
+            <div class="page-link-container"><a th:href = "@{/auth/account}" class="page-link">Account</a></div>
+            <div class="page-link-container"><a th:href = "@{/auth/bought-cars}" class="page-link">Bought Cars</a></div>
+            <div class="page-link-container"><a th:href = "@{/auth/sold-cars}" class="page-link">Sold Cars</a></div>
+            <div class="page-link-container"><a th:href = "@{/auth/cars-for-sale}" class="page-link">Cars For Sale</a></div>
         </div>
 
         <div class="active-page"></div>

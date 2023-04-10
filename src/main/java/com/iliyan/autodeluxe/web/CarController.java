@@ -67,6 +67,15 @@ public class CarController {
         return "car-offer";
     }
 
+    @PostMapping("/buy-car/{id}")
+    public String postBuyCar(@PathVariable String id) {
+
+        if(loggedUser.isLoggedIn()){
+            this.carService.buyCar(Long.parseLong(id));
+        }
+        return "redirect:/";
+    }
+
     //Model attributes
 
     @ModelAttribute(name = "addCarModel")

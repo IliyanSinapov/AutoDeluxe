@@ -52,8 +52,6 @@ public class RestfulController {
         return loggedUser;
     }
 
-
-    //region sendCarsToFrontEndToShow region
     @GetMapping("/cars")
     public List<CarModelToDisplay> getCars() {
 
@@ -95,7 +93,6 @@ public class RestfulController {
         }
         return null;
     }
-    //endregion
 
     @GetMapping("/cars/{id}")
     public CarOfferModel getOffer(@PathVariable String id) {
@@ -132,7 +129,113 @@ public class RestfulController {
         return null;
     }
 
+    @GetMapping("/cars/bought-cars")
+    public List<CarModelToDisplay> getBoughtCars() {
+        if (loggedUser.isLoggedIn()) {
 
+            List<CarModelToDisplay> carsToDisplay = new ArrayList<>();
+            UserModel currentUser = this.modelMapper.map(userService.findById(loggedUser.getId()), UserModel.class);
+
+            List<CarModel> cars = currentUser.getBoughtCars().getCars().stream().map(car -> this.modelMapper.map(car, CarModel.class)).toList();
+
+            for (int i = 0; i < cars.size(); i++) {
+
+                CarModelToDisplay car = new CarModelToDisplay();
+
+                    String imageData = Base64.getEncoder().encodeToString(cars.get(i).getImage());
+                    String imageType = this.tika.detect(cars.get(i).getImage());
+
+                    car.setId(cars.get(i).getId());
+                    car.setMake(cars.get(i).getMake());
+                    car.setModel(cars.get(i).getModel());
+                    car.setSeries(cars.get(i).getSeries());
+                    car.setMileage(cars.get(i).getMileage());
+                    car.setCondition(cars.get(i).getCondition());
+                    car.setDescription(cars.get(i).getDescription());
+                    car.setImage(imageData);
+                    car.setPrice(cars.get(i).getPrice());
+                    car.setYear(cars.get(i).getYear());
+                    car.setImageType(imageType);
+
+                    carsToDisplay.add(car);
+            }
+
+            return carsToDisplay;
+        }
+        return null;
+    }
+
+    @GetMapping("/cars/sold-cars")
+    public List<CarModelToDisplay> getSoldCars() {
+        if (loggedUser.isLoggedIn()) {
+
+            List<CarModelToDisplay> carsToDisplay = new ArrayList<>();
+            UserModel currentUser = this.modelMapper.map(userService.findById(loggedUser.getId()), UserModel.class);
+
+            List<CarModel> cars = currentUser.getSoldCars().getCars().stream().map(car -> this.modelMapper.map(car, CarModel.class)).toList();
+
+            for (int i = 0; i < cars.size(); i++) {
+
+                CarModelToDisplay car = new CarModelToDisplay();
+
+                String imageData = Base64.getEncoder().encodeToString(cars.get(i).getImage());
+                String imageType = this.tika.detect(cars.get(i).getImage());
+
+                car.setId(cars.get(i).getId());
+                car.setMake(cars.get(i).getMake());
+                car.setModel(cars.get(i).getModel());
+                car.setSeries(cars.get(i).getSeries());
+                car.setMileage(cars.get(i).getMileage());
+                car.setCondition(cars.get(i).getCondition());
+                car.setDescription(cars.get(i).getDescription());
+                car.setImage(imageData);
+                car.setPrice(cars.get(i).getPrice());
+                car.setYear(cars.get(i).getYear());
+                car.setImageType(imageType);
+
+                carsToDisplay.add(car);
+            }
+
+            return carsToDisplay;
+        }
+        return null;
+    }
+
+    @GetMapping("/cars/cars-for-sale")
+    public List<CarModelToDisplay> getCarsForSale() {
+        if (loggedUser.isLoggedIn()) {
+
+            List<CarModelToDisplay> carsToDisplay = new ArrayList<>();
+            UserModel currentUser = this.modelMapper.map(userService.findById(loggedUser.getId()), UserModel.class);
+
+            List<CarModel> cars = currentUser.getCarsForSale().getCars().stream().map(car -> this.modelMapper.map(car, CarModel.class)).toList();
+
+            for (int i = 0; i < cars.size(); i++) {
+
+                CarModelToDisplay car = new CarModelToDisplay();
+
+                String imageData = Base64.getEncoder().encodeToString(cars.get(i).getImage());
+                String imageType = this.tika.detect(cars.get(i).getImage());
+
+                car.setId(cars.get(i).getId());
+                car.setMake(cars.get(i).getMake());
+                car.setModel(cars.get(i).getModel());
+                car.setSeries(cars.get(i).getSeries());
+                car.setMileage(cars.get(i).getMileage());
+                car.setCondition(cars.get(i).getCondition());
+                car.setDescription(cars.get(i).getDescription());
+                car.setImage(imageData);
+                car.setPrice(cars.get(i).getPrice());
+                car.setYear(cars.get(i).getYear());
+                car.setImageType(imageType);
+
+                carsToDisplay.add(car);
+            }
+
+            return carsToDisplay;
+        }
+        return null;
+    }
 
     private boolean currentUserOwnsCar(UserModel currentUser, CarModel car) {
         return !currentUser.getCarsForSale().getCars().contains(car)

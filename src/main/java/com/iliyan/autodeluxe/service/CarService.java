@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarService {
@@ -67,5 +68,41 @@ public class CarService {
         return user.getCarsForSale().getCars().contains(car)
                 || user.getSoldCars().getCars().contains(car)
                 || user.getBoughtCars().getCars().contains(car);
+    }
+
+    public void buyCar(long id) {
+        if (this.carRepository.findById(id).isPresent()){
+            User currentUser = this.userRepository.findById(loggedUser.getId()).get();
+            CarModel car = this.modelMapper.map(this.carRepository.findById(id).get(), CarModel.class);
+
+            UserModel userModel = findCarOwner(car);
+            if (userModel == null)
+                return;
+            User seller = this.userRepository.findById(userModel.getId()).get();
+
+            if (loggedUser.getId() == seller.getId())
+                return;
+
+            seller.getCarsForSale().getCars().removeIf(c -> c.getId() == car.getId());
+            seller.getSoldCars().getCars().add(this.modelMapper.map(car, Car.class));
+            currentUser.getBoughtCars().getCars().add(this.modelMapper.map(car, Car.class));
+
+            this.userRepository.save(seller);
+            this.userRepository.save(currentUser);
+        }
+    }
+
+    private UserModel findCarOwner(CarModel carModel) {
+
+        List<UserModel> allUsers = this.userRepository.findAll().stream().map(user -> this.modelMapper.map(user, UserModel.class)).toList();
+
+        for (int i = 0; i < allUsers.size(); i++) {
+            for (int j = 0; j < allUsers.get(i).getCarsForSale().getCars().size(); j++) {
+                if (allUsers.get(i).getCarsForSale().getCars().get(j).getId() == carModel.getId())
+                    return allUsers.get(i);
+            }
+        }
+
+        return null;
     }
 }

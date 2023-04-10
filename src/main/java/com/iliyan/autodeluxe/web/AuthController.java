@@ -46,7 +46,7 @@ public class AuthController {
     @PostMapping("/register")
     public String postRegister(@Valid @ModelAttribute(name = "userRegisterForm")UserRegisterModel userRegisterModel,
                                BindingResult bindingResult,
-                               RedirectAttributes redirectAttributes) {
+                               RedirectAttributes redirectAttributes) throws IOException {
 
 
         if (bindingResult.hasErrors()){
@@ -130,6 +130,21 @@ public class AuthController {
         this.authService.changeUserImage(imageData);
 
         return "redirect:account";
+    }
+
+    @GetMapping("/bought-cars")
+    public String getBoughtCars() {
+        return "account-bought-cars";
+    }
+
+    @GetMapping("/sold-cars")
+    public String getSoldCars() {
+        return "account-sold-cars";
+    }
+
+    @GetMapping("/cars-for-sale")
+    public String getCarsForSale() {
+        return "account-cars-for-sale";
     }
 
     //Model attributes

@@ -14,7 +14,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
 	<meta charset="UTF-8">
-	<title>Bought Cars</title>
+	<title>Sold Cars</title>
 
 	<span>
             <span id="navigation-css"></span>
@@ -64,7 +64,7 @@
 		}
 	});
 
-	fetch('/api/cars/bought-cars')
+	fetch('/api/cars/sold-cars')
 		.then(response => response.json())
 		.then(data => {
 			const html = data.map(car => `
