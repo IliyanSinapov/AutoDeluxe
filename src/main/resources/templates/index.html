@@ -16,9 +16,7 @@
         <meta charset="UTF-8">
         <title>Offer</title>
 
-        <!--  This span is filled with <link> tags for css files!  -->
         <span>
-        <!--  This span contains the css files for the navigation /desktop and mobile/  -->
             <span id = "navigation-css"></span>
             <link rel="stylesheet" href="/css/styles/style.css" >
             <link href="/css/styles/desktop-pages-with-form-style.css" rel="stylesheet">
@@ -27,7 +25,6 @@
             <link href="/css/styles/index-page-styles.css" rel="stylesheet">
         </span>
 
-        <!--  This span is filled with <script> tags for JavaScript files!  -->
         <span>
             <script src="/js/scripts/navigation-script.js" type="module"></script>
         </span>
@@ -97,15 +94,6 @@
             </div>
 
             <div class="car-offers">
-<!--                <div th:each = "car : ${cars}">-->
-<!--                    <div class="offer">-->
-<!--                        <img th:src="@{'data:image;base64,' + car.imageData}" alt="" class="offer-image">-->
-<!--                        <h3 class="offer-header" th:text = "${car.make} + ' ' ${car.model} + ' ' ${car.series}"></h3>-->
-<!--                        <h3 class="offer-price" th:text="${car.price} + ' euro'"></h3>-->
-<!--                        <p class = "offer-description" th:text="${car.description}"></p>-->
-<!--                        <button class = "offer-button btn" th:href = "@{/car/car.id}">Go To Offer</button>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </span>
 
@@ -120,7 +108,6 @@
             }
         });
 
-        // Make a request to your REST API
         fetch('/api/cars')
             .then(response => response.json())
             .then(data => {
@@ -130,14 +117,15 @@
                     <h3 class="offer-header">${car.make} ${car.model} ${car.series}</h3>
                     <h3 class="offer-price">${car.price} euro</h3>
                     <h2 class="offer-condition">${car.condition}</h2>
-                    <p class="offer-description">${car.description}</p>
+                    <div class = "description-div">
+                        <p class="offer-description">${car.description}</p>
+                    </div>
                     <div class="offer-button-background">
                         <a href="/car/${car.id}" class="offer-button btn">Go To Offer</a>
                     </div>
                 </div>
             `).join('');
 
-                // Append the HTML string to the container
                 offerContainer.innerHTML = html;
                 console.log(data);
             })

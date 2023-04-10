@@ -51,30 +51,13 @@
                 <li class = "nav-item">
                     <a class = "nav-link" th:href = "@{/car/add}">Add Car</a>
                 </li>
-            </th:block>
 
-            <th:block>
-                <li class="nav-item dropdown">
-                    <a class = "dropdown-header nav-link" th:text = "${@loggedUser.username}"></a>
-                    <th:block th:if = "${@loggedUser.isLoggedIn()}">
-                        <i class = "fa-solid fa-caret-down dropdown-icon"></i>
-                    </th:block>
-                    <ul class = "dropdown-menu">
-                        <li class = "dropdown-item">
-                            <a href="#" class = "nav-link"> Account</a>
-                        </li>
-
-                        <li class = "dropdown-item">
-                            <a href="#" class = "nav-link">Settings</a>
-                        </li>
-                    </ul>
+                <li class = "nav-item">
+                    <a th:href="@{/auth/account}" class = "nav-link"> Account</a>
                 </li>
-            </th:block>
 
-            <th:block th:if = "${@loggedUser.isLoggedIn()}">
                 <li class="nav-item">
                     <form th:action = "@{/auth/logout}" th:method = "POST" th:object = "${@loggedUser}">
-<!--                        <a th:href="@{/auth/logout}" class = "nav-link" id = "logout-btn">Logout</a>-->
                         <input type="submit" value="Logout" class = "nav-link"
                                style = "background: transparent; color: #fff; border: transparent; font-size: 1.6rem; cursor:pointer;">
                     </form>

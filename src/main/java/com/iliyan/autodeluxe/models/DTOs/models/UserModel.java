@@ -30,6 +30,7 @@ public class UserModel {
     private BoughtCarsModel boughtCars;
     private SoldCarsModel soldCars;
     private CarsForSaleModel carsForSale;
+    private byte[] userImage;
 
     public boolean isValid() {
         return this.id != null;

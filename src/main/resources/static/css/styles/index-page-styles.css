@@ -60,8 +60,13 @@
 }
 
 .offer-description {
-    grid-column: 2;
     font-size: 1.7vh;
+}
+
+.description-div {
+   grid-column: 2;
+    max-height: 15vh;
+    overflow-y: hidden;
 }
 
 .offer-condition {

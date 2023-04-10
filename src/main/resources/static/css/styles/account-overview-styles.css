@@ -1,0 +1,240 @@
+.main-page {
+    font-size: 2rem;
+}
+
+.account {
+    display: grid;
+
+    grid-template-columns: 1.45fr 1fr;
+    grid-template-rows: 55vh;
+
+    padding: 5rem;
+}
+
+.account-overview {
+    height: 92.9vh;
+    width: 46.9vw;
+
+    display: grid;
+    grid-template-rows: 15rem repeat(4, 5rem);
+    grid-template-columns: 1.7fr;
+
+    grid-gap: 2rem;
+}
+
+.page-header {
+    margin-bottom: 10rem;
+    grid-row: 1;
+    grid-column: 1;
+
+    justify-self: left;
+}
+
+.account-setting {
+    border-bottom: solid 1px #9b9b9b;
+
+    max-width: 40vw;
+
+    align-items: end;
+    padding: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    grid-column: 1;
+
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.account-setting-label {
+    justify-self: left;
+    color: #656565;
+}
+
+.account-setting-value {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: center;
+}
+
+.account-image-overview {
+    display: grid;
+
+    grid-template-rows: 35vh 5.3rem;
+    grid-template-columns: 1fr;
+
+    justify-content: center;
+}
+
+.edit-icon {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    align-self: end;
+    cursor: pointer;
+}
+
+.show-image {
+    background-size: 100% 100%;
+    border-radius: 50%;
+    height: 35vh;
+    width: 35vh;
+
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    /*cursor: pointer;*/
+
+    position: relative;
+}
+
+.uploadImage {
+    /*align-self: end;*/
+    width: 100%;
+    height: 10rem;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    outline: none;
+    color: transparent;
+    padding: 1rem 15.5rem;
+    box-sizing: border-box;
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.upload-image {
+    position: absolute;
+
+    bottom: 0;
+
+    border: transparent;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background: rgba(17, 16, 56, 0.38);
+    width: 35rem;
+    height: 10rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-upload {
+    position: absolute;
+    bottom: 15px;
+
+    background-color: rgba(17, 16, 56, 0.84);
+
+    border: transparent;
+    border-radius: 1rem;
+
+    color: #fff;
+    font-size: 1.7rem;
+
+    width: 12rem;
+    height: 2.5rem;
+
+    cursor: pointer;
+}
+
+.change-username {
+    display: none;
+}
+
+#change-username-container {
+    max-width: 40vw;
+    display: grid;
+
+    grid-template-columns: 3fr 1fr;
+
+    padding-right: 1rem;
+
+}
+.change-setting {
+
+    max-width: 35vw;
+
+    align-items: end;
+
+    grid-column: 1;
+
+    display: flex;
+}
+
+.change-button{
+    grid-column: 2;
+
+    width: 10rem;
+    height: 4rem;
+
+    border: transparent;
+    border-radius: 2rem;
+
+    background: linear-gradient(-45deg, rgba(14, 13, 51, 0.84), rgba(42, 41, 79, 0.84));
+    background-size: 100% 100%;
+    animation: gradient 15s ease infinite;
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 2rem;
+    border: transparent;
+    border-radius: 2rem;
+
+    color: #fff;
+
+    box-shadow: 0.1rem 0 1rem 0.25rem rgba(42, 41, 79, 0.84);
+
+    justify-self: end;
+    align-self: end;
+}
+
+.form__field:focus {
+    padding-bottom: 6px;
+    border-width: 3px;
+    border-image: linear-gradient(-45deg, rgba(14, 13, 51, 0.84), rgba(42, 41, 79, 0.84));
+    border-image-slice: 1;
+}
+
+.filter-box {
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 4rem 4rem 4rem 4rem;
+    grid-gap: 0.5px;
+}
+
+.page-link-container {
+    border: ridge 4.5px #242831;
+    border-radius: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: end;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.page-link {
+    font-size: 2rem;
+    margin-bottom: 2%;
+    cursor: pointer;
+    user-select: none;
+}
+
+.active-page {
+    position: absolute;
+
+    top: 9.36vh;
+    left: 3.2rem;
+
+    height: 3.5rem;
+    width: 0.5rem;
+
+    border: transparent;
+    border-radius: 0.5rem;
+
+    background: #fff;
+}

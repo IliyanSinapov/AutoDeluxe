@@ -1,5 +1,7 @@
 package com.iliyan.autodeluxe.service;
 
+import com.iliyan.autodeluxe.models.DTOs.models.CarModel;
+import com.iliyan.autodeluxe.models.DTOs.models.UserModel;
 import com.iliyan.autodeluxe.models.DTOs.view.AddCarModel;
 import com.iliyan.autodeluxe.models.beans.LoggedUser;
 import com.iliyan.autodeluxe.models.entities.Car;
@@ -10,6 +12,8 @@ import org.apache.tika.Tika;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CarService {
@@ -42,5 +46,26 @@ public class CarService {
             user.getCarsForSale().getCars().add(car);
             userRepository.save(user);
         }
+    }
+
+    public UserModel findOwner(CarModel car) {
+        List<UserModel> users = this.userService.findAll();
+        UserModel owner = null;
+
+        for (UserModel user : users) {
+            boolean isOwner = userOwnsCar(user, car);
+
+            if (isOwner) {
+                owner = user;
+                return owner;
+            }
+        }
+        return null;
+    }
+
+    private boolean userOwnsCar(UserModel user, CarModel car) {
+        return user.getCarsForSale().getCars().contains(car)
+                || user.getSoldCars().getCars().contains(car)
+                || user.getBoughtCars().getCars().contains(car);
     }
 }

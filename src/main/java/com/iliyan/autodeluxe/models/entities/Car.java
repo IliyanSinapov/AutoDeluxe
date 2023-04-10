@@ -36,7 +36,7 @@ public class Car {
     private Condition condition;
     @Column
     private Integer mileage;
-    @Column
+    @Column(length = 2147483647)
     private String description;
     @Column
     private String imageType;

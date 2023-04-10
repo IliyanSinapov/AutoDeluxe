@@ -37,4 +37,6 @@ public class User{
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private CarsForSale carsForSale;
+    @Column(nullable = true, length = 10 * 3880 * 2160)
+    private byte[] userImage;
 }

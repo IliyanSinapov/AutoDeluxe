@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserService {
 
@@ -16,6 +20,7 @@ public class UserService {
     private final ModelMapper modelMapper;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final LoggedUser loggedUser;
+    private final UserModel currentUser;
 
     @Autowired
     public UserService(UserRepository userRepository, ModelMapper modelMapper, BCryptPasswordEncoder bCryptPasswordEncoder, LoggedUser loggedUser) {
@@ -23,6 +28,11 @@ public class UserService {
         this.modelMapper = modelMapper;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.loggedUser = loggedUser;
+
+        if (loggedUser.isLoggedIn())
+            this.currentUser = this.modelMapper.map(this.userRepository.findById(loggedUser.getId()).get(), UserModel.class);
+        else
+            this.currentUser = null;
     }
 
     public boolean checkUserPassword(String password, UserModel userModel){
@@ -31,5 +41,22 @@ public class UserService {
 
     public User findById(Long id) {
         return userRepository.findById(id).get();
+    }
+
+    public List<UserModel> findAll() {
+
+        List<UserModel> users = new ArrayList<>();
+
+        for (int i = 0; i < this.userRepository.count(); i++) {
+            UserModel userModel = this.modelMapper.map(this.userRepository.findById(Long.parseLong((i + 2) + "")).get(), UserModel.class);
+            users.add(userModel);
+        }
+
+
+        return users;
+    }
+
+    public UserModel getCurrentUser() {
+        return currentUser;
     }
 }

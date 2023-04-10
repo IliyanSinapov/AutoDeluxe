@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+	/>
+
+	<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
+	/>
+
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+	<meta charset="UTF-8">
+	<title>Account</title>
+
+	<span>
+            <span id="navigation-css"></span>
+            <link rel="stylesheet" href="/css/styles/style.css">
+            <link rel="stylesheet" href="/css/styles/desktop-pages-with-form-style.css">
+            <link href="/css/styles/index-page-styles.css" rel="stylesheet">
+            <link href="/css/styles/account-overview-styles.css" rel="stylesheet">
+            <script src="https://kit.fontawesome.com/09640ec319.js" crossorigin="anonymous"></script>
+        </span>
+
+	<span>
+        <script src="/js/scripts/navigation-script.js" type="module"></script>
+    </span>
+
+</head>
+
+<body style="overflow-y: hidden">
+
+<span th:insert="~{fragments/navbar}"></span>
+
+<span class="main-page">
+
+    <span>
+        <div class="filter-box">
+            <div class="page-link-container"><a class="page-link">Account</a></div>
+            <div class="page-link-container"><a class="page-link">Bought Cars</a></div>
+            <div class="page-link-container"><a class="page-link">Sold Cars</a></div>
+            <div class="page-link-container"><a class="page-link">Cars For Sale</a></div>
+        </div>
+
+        <div class="active-page"></div>
+    </span>
+
+    <div class="car-offers">
+    </div>
+</span>
+
+<script src = "/js/scripts/account-page.js"></script>
+
+<!--<script th:type="module">-->
+<!--	const offerContainer = document.querySelector('.car-offers');-->
+
+<!--	offerContainer.addEventListener('click', function(event) {-->
+<!--		const target = event.target;-->
+<!--		if (target.classList.contains('offer-button')) {-->
+<!--			window.location.href = target.getAttribute('href');-->
+<!--		}-->
+<!--	});-->
+
+<!--	fetch('/api/bought-cars')-->
+<!--		.then(response => response.json())-->
+<!--		.then(data => {-->
+<!--			const html = data.map(car => `-->
+<!--                <div class="offer">-->
+<!--                    <img src="data:${car.imageType};base64,${car.image}" class="offer-image">-->
+<!--                    <h3 class="offer-header">${car.make} ${car.model} ${car.series}</h3>-->
+<!--                    <h3 class="offer-price">${car.price} euro</h3>-->
+<!--                    <h2 class="offer-condition">${car.condition}</h2>-->
+<!--                    <div class = "description-div">-->
+<!--                        <p class="offer-description">${car.description}</p>-->
+<!--                    </div>-->
+<!--                    <div class="offer-button-background">-->
+<!--                        <a href="/car/${car.id}" class="offer-button btn">Go To Offer</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            `).join('');-->
+
+<!--			offerContainer.innerHTML = html;-->
+<!--			console.log(data);-->
+<!--		})-->
+<!--		.catch(error => console.error(error));-->
+<!--</script>-->
+</body>
+</html>

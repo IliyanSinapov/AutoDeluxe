@@ -12,9 +12,9 @@ spring:
                 enabled: false
     datasource:
         driverClassName: com.mysql.cj.jdbc.Driver
-        password: pscale_pw_uL5NTret7L5qmB2BRIH3kYDG9kwftZKQ5T2gVV7irRa
-        url: jdbc:mysql://eu-central.connect.psdb.cloud/autodeluxe?sslMode=VERIFY_IDENTITY
-        username: dgkbu5lmkjr15jc18fgc
+        password: pscale_pw_b4yTx0nxvSDiCQgQ9NZjYTddapvTxvAUCwWrTxS6gFH
+        url: jdbc:mysql://aws.connect.psdb.cloud/autodeluxe?sslMode=VERIFY_IDENTITY
+        username: xqbl40qi0qblj2bjj5yj
 
 #        password: admin
 #        url: jdbc:mysql://localhost:3306/auto_delux?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimeZone=UTC

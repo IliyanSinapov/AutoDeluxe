@@ -26,24 +26,23 @@
 
 .condition {
     color: #727272;
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.description-div {
+    grid-row: 3;
+    grid-column: 1;
 }
 
 .buy-form {
     justify-self: right;
     align-self: end;
-}
 
-.seller-div {
-    position: relative;
-    top: 4rem;
-    justify-self: left;
-    align-self: end;
-
-    color: #727272;
+    grid-row: 4;
 }
 
 .buy-car-btn {
-
     position: relative;
     top: -1rem;
 

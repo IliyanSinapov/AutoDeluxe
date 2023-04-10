@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
+    />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+    <meta charset="UTF-8">
+    <title>Account</title>
+
+    <span>
+            <span id="navigation-css"></span>
+            <link rel="stylesheet" href="/css/styles/style.css">
+            <link rel="stylesheet" href="/css/styles/desktop-pages-with-form-style.css">
+            <link href="/css/styles/index-page-styles.css" rel="stylesheet">
+            <link href="/css/styles/account-overview-styles.css" rel="stylesheet">
+            <script src="https://kit.fontawesome.com/09640ec319.js" crossorigin="anonymous"></script>
+        </span>
+
+    <span>
+        <script src="/js/scripts/navigation-script.js" type="module"></script>
+    </span>
+
+</head>
+
+<body style="overflow-y: hidden">
+
+<span th:insert="~{fragments/navbar}"></span>
+
+<span class="main-page">
+
+    <span>
+        <div class="filter-box">
+            <div class="page-link-container"><a class="page-link">Account</a></div>
+            <div class="page-link-container"><a class="page-link">Bought Cars</a></div>
+            <div class="page-link-container"><a class="page-link">Sold Cars</a></div>
+            <div class="page-link-container"><a class="page-link">Cars For Sale</a></div>
+        </div>
+
+        <div class="active-page"></div>
+    </span>
+
+    <div class="account">
+        <div class="account-overview">
+            <h1 class="page-header">Account Overview</h1>
+            <div class="account-setting">
+                <p class="account-setting-label">Username</p>
+                <p class="account-setting-value" th:text = "${@loggedUser.getUsername()}"></p>
+            <i class="fas fa-edit edit-icon" onclick="handleClick()"></i>
+        </div>
+
+        <form class = "change-username"  th:action = "@{/auth/change-username}" th:method = "POST" th:object = "${changeUsername}">
+
+            <small th:if = "${#fields.hasAnyErrors()}" class = "error-text">
+                The username cannot be empty or is already taken!
+            </small>
+
+            <div id = "change-username-container">
+                <div class="form__group field change-setting">
+                    <input type="text" class="form__field" placeholder="Username" name="username" id='username' />
+                    <label for="username" class="form__label"> New Username</label>
+                </div>
+
+
+                <button type = "submit" class = "change-button btn">Change</button>
+            </div>
+        </form>
+
+            <div class="account-setting">
+                <p class="account-setting-label">Email</p>
+                <p class="account-setting-value" th:text = "${@loggedUser.getEmail()}"></p>
+            </div>
+        </div>
+
+        <div class="account-image-overview">
+
+            <div class="show-image">
+                <img th:src="${'data:$' + @loggedUser.getImageType() + ';base64,' + @loggedUser.getImageData()}" alt="" class="account-image">
+
+                <div class="upload-image">
+                    <i id="image-upload" class="fa-solid fa-camera fa-2xl"
+                       style="color: #111038; position:absolute; bottom: 50px"></i>
+                </div>
+
+                <form class=upload-image th:action = "@{/auth/change-image}" th:method = "POST" enctype="multipart/form-data">
+                    <input type="file" placeholder="Image" name="imageFile"
+                           id='uploadImage' class="uploadImage" required/>
+
+                    <button type="submit" class="image-upload">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</span>
+
+<script src = "/js/scripts/account-page.js"></script>
+</body>
+</html>

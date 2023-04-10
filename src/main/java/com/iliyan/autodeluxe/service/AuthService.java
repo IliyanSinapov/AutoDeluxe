@@ -4,6 +4,8 @@ import com.iliyan.autodeluxe.models.DTOs.models.BoughtCarsModel;
 import com.iliyan.autodeluxe.models.DTOs.models.CarsForSaleModel;
 import com.iliyan.autodeluxe.models.DTOs.models.SoldCarsModel;
 import com.iliyan.autodeluxe.models.DTOs.models.UserModel;
+import com.iliyan.autodeluxe.models.DTOs.view.ChangeImage;
+import com.iliyan.autodeluxe.models.DTOs.view.ChangeUsername;
 import com.iliyan.autodeluxe.models.DTOs.view.UserLoginModel;
 import com.iliyan.autodeluxe.models.DTOs.view.UserRegisterModel;
 import com.iliyan.autodeluxe.models.beans.LoggedUser;
@@ -81,13 +83,33 @@ public class AuthService {
         if (loginCandidate.isValid() && passMatch) {
             this.loggedUser
                     .setId(loginCandidate.getId());
-
             this.loggedUser
                     .setUsername(loginCandidate.getUsername());
+            this.loggedUser
+                    .setEmail(loginCandidate.getEmail());
+            this.loggedUser
+                    .setImage(loginCandidate.getUserImage());
         }
     }
 
     public void logoutUser() {
         loggedUser.clearUser();
+    }
+
+    public void changeUsername(ChangeUsername changeUsername) {
+        if (!(this.userRepository.findByUsername(changeUsername.getUsername()).isPresent())) {
+            User currentUser = this.userRepository.findById(loggedUser.getId()).get();
+            currentUser.setUsername(changeUsername.getUsername());
+            this.userRepository.save(currentUser);
+
+            this.loggedUser.setUsername(changeUsername.getUsername());
+        }
+    }
+
+    public void changeUserImage(byte[] changeImage) {
+        User currentUser = this.userRepository.findById(loggedUser.getId()).get();
+        currentUser.setUserImage(changeImage);
+        userRepository.save(currentUser);
+        this.loggedUser.setImage(changeImage);
     }
 }
