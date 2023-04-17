@@ -44,58 +44,9 @@
     </div>
 
     <span th:if = "${@loggedUser.isLoggedIn()}" class="main-page">
-
-            <div class="filter-box">
-
-                <form class="filter-form">
-                    <div class="form__group field">
-                        <p class="filter-header">Make</p>
-                        <div class="select">
-                            <select id="make" name="make" class="form__select" aria-describedby="categoryHelpInline">
-                                <option value="" selected disabled>Make</option>
-                                <option>Ford</option>
-                                <option>Chevrolet</option>
-                                <option>Peugeot</option>
-                                <option>Renault</option>
-                                <option>Dodge</option>
-                                <option>Toyota</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form__group field">
-                        <p class="filter-header">Model</p>
-                        <div class="select">
-                            <select id="model" name="model" class="form__select" aria-describedby="categoryHelpInline">
-                                <option value="" selected disabled>Model</option>
-                                <option>Fiesta</option>
-                                <option>Focus</option>
-                                <option>Mustang</option>
-                                <option>Camaro</option>
-                                <option>Challenger</option>
-                                <option>Charger</option>
-                                <option>Supra</option>
-                                <option>Corolla</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form__group field">
-                        <input type="date" class="form__field" placeholder="year" name="year"
-                               id='year'/>
-                        <label for="year" class="form__label">Year</label>
-                    </div>
-
-                    <button type="submit" class="filter-button btn">
-                        Filter
-                    </button>
-                </form>
-
-            </div>
-
-            <div class="car-offers">
-            </div>
-        </span>
+        <div class="car-offers">
+        </div>
+    </span>
 
 
     <script th:type="module">

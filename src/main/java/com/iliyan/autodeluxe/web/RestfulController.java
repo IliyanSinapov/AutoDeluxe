@@ -1,6 +1,7 @@
 package com.iliyan.autodeluxe.web;
 
 import com.iliyan.autodeluxe.models.DTOs.models.CarModel;
+import com.iliyan.autodeluxe.models.DTOs.models.CarsForSaleModel;
 import com.iliyan.autodeluxe.models.DTOs.models.UserModel;
 import com.iliyan.autodeluxe.models.DTOs.view.CarModelToDisplay;
 import com.iliyan.autodeluxe.models.DTOs.view.CarOfferModel;

@@ -35,7 +35,7 @@
     margin: 2rem;
     padding: 1.5rem;
 
-    width: 73vw;
+    width: 100%;
     height: 20vh;
 
     border: transparent;
@@ -183,6 +183,4 @@ select::-ms-expand {
     width: 12rem;
 
     color: #fff;
-
-    /*box-shadow: 0.1rem 0 1rem 0.25rem #046529;*/
 }
